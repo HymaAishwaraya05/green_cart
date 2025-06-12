@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Order Summary</h2>
+
+        <!-- Product Image -->
+        <img id="product-image" src="" alt="Product Image" class="product-img">
+
+        <!-- Product Details -->
+        <p><strong>Product:</strong> <span id="product-name"></span></p>
+        <p><strong>Price:</strong> <span id="product-cost"></span></p>
+        <p><strong>Delivery Charges:</strong> ₹50</p>
+        <p><strong>Quantity:</strong> <span id="product-quantity"></span></p>
+        <p><strong>Total Amount:</strong> <span id="total-amount"></span></p>
+
+        <h2>Enter Customer Details</h2>
+
+        <!-- Customer Details Form -->
+        <form id="customer-form">
+            <label for="customerName">Name</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <div class="button-container">
+                <button type="submit">Confirm Order</button>
+                <button type="button" class="go-back" onclick="goBack()">Go Back</button>
+            </div>
+            
+        </form>
+
+        
+    </div>
+
+    <script>
+        // Load product details from localStorage
+        document.getElementById('product-image').src = localStorage.getItem('itemImage');
+        document.getElementById('product-name').innerText = localStorage.getItem('itemName');
+        document.getElementById('product-cost').innerText = localStorage.getItem('itemCost');
+        document.getElementById('product-quantity').innerText = localStorage.getItem('quantity');
+
+        const price = parseFloat(localStorage.getItem('itemCost').replace('₹', '').trim());
+        const quantity = parseInt(localStorage.getItem('quantity'));
+        const totalAmount = (price * quantity) + 50; // Adding ₹50 as delivery charges
+        document.getElementById('total-amount').innerText = "₹" + totalAmount.toFixed(2);
+
+        // Go back to product details page
+        function goBack() {
+            window.location.href = "product.html";
+        }
+
+        // Handle order confirmation and generate bill
+        document.getElementById('customer-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect customer details
+            const customerName = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+
+            // Store order details in localStorage
+            localStorage.setItem('customerName', customerName);
+            localStorage.setItem('customerAddress', address);
+            localStorage.setItem('customerPhone', phone);
+
+            // Redirect to the bill page
+            window.location.href = "bill.html"; 
+        });
+    </script>
+</body>
+</html>

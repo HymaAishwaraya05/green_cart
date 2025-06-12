@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - The Green Cart</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create an Account</h2>
+    <form id="signup-form">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+      </div>
+      <div class="input-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+      <div class="input-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" required placeholder="Enter your address"></textarea>
+      </div>
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+      </div>
+      <button type="submit">Sign Up</button>
+      <p class="signin-link">Already have an account? <a href="login.html">Sign In</a></p>
+    </form>
+  </div>
+
+  <script>
+    // Wait for the DOM to fully load
+    document.addEventListener("DOMContentLoaded", function() {
+      // Event listener for form submission
+      document.querySelector("#signup-form").addEventListener("submit", function(e) {
+        e.preventDefault();  // Prevent form from submitting and page reloading
+        
+        // Get form values
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+        let dob = document.querySelector("#dob").value;
+        let address = document.querySelector("#address").value;
+        let phone = document.querySelector("#phone").value;
+        
+        // Check if all fields are filled (basic validation)
+        if (email && password && dob && address && phone) {
+          console.log("Sign-up Data: ", { email, password, dob, address, phone });
+          alert("Sign-up successful! Redirecting...");
+          window.location.href = "index.html";  // Redirect after form submission
+        } else {
+          alert("Please fill in all fields.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

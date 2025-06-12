@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery App</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.yCQldnBMFxmnVC7INYQJ0wHaHa&pid=Api&P=0&h=220" 
+             alt="Green Cart Logo" class="logo-image">
+        <h1><i class="fas fa-shopping-basket"></i> The Green Cart <i class="fas fa-leaf"></i></h1>
+      </div>
+      
+      <div class="search-bar">
+        <input type="text" placeholder="Search for groceries...">
+        <button type="button"><i class="fas fa-search"></i> Search</button>
+      </div>
+      <nav>
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#groceries"><i class="fas fa-apple-alt"></i> Groceries</a>
+        <a href="#liquids"><i class="fas fa-wine-bottle"></i> Liquids</a>
+        <a href="#bakeryitems"><i class="fas fa-bread-slice"></i> Bakery Items</a>
+        
+        <a href="#" id="cart-btn">
+          <i class="fas fa-shopping-cart"></i> 
+          <span id="cart-count">0</span> Items
+        </a>
+        <a href="#" id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+
+        
+      </nav>
+    </div>
+  </header>
+  
+
+
+  <main>
+    <div class="grocery-container">
+      <!-- Grocery Item 1 -->
+      
+  
+      <!-- Grocery Item 2 -->
+      <div class="grocery-item" data-name="Cupcake" data-category="Bakery items" data-benefits="Sweet and tasty" data-cost="₹50" data-delivery="Express">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.SS4mq8Ugk09po-SsvMXWuwHaEK&pid=Api&P=0&h=220" alt="Cupcake">
+        <h3>Cupcake</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Cupcake')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+
+      </div>
+      <div class="grocery-item" data-name="Bread" data-category="Bakery items" data-benefits="Provides Calories" data-cost="₹50" data-delivery="Express">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.aGm86Gqp6yyL0PaztbWFpAHaE8&pid=Api&P=0&h=220" alt="Cupcake">
+        <h3>Bread</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Cupcake')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+      <div class="grocery-item" data-name="Cheese" data-category="Bakery items" data-benefits="Great source for protiens" data-cost="₹382" data-delivery="Express">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.xQpY_TlIlGGFQPJiJFfrawHaHa&pid=Api&P=0&h=220" alt="Cheese">
+        <h3>Cheese</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Cheese')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+  
+      <!-- Grocery Item 3 -->
+      <div class="grocery-item" data-name="Broccoli" data-category="groceries" data-benefits="Boost immunity" data-cost="₹30" data-delivery="Regular">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.Iwpd-0C3ziKGXuYSTMATxgHaE6&pid=Api&P=0&h=220" alt="Broccoli">
+        <h3>Broccoli</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Broccoli')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <div class="grocery-item" data-name="Basmati rice" data-category="groceries" data-benefits="Rich in nutrients" data-cost="₹169" data-delivery="Regular">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.1wMW14MlzX-9NV32RTFhqgHaJT&pid=Api&P=0&h=220" alt="Broccoli">
+        <h3>Basmati rice</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Basmati rice')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <div class="grocery-item" data-name="Chana Dal" data-category="groceries" data-benefits="Diabetic Friendly" data-cost="₹84" data-delivery="Regular">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.Lt6OJ9MasDPjD0a2Iz4wzQHaHa&pid=Api&P=0&h=220" alt="Chana Dal">
+        <h3>Chana Dal</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('ChanaDal')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <div class="grocery-item" data-name="Radish" data-category="groceries" data-benefits="High in potassium" data-cost="₹84" data-delivery="Regular">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.BZWDL_8CSnMOCZaH4aoWvgHaFy&pid=Api&P=0&h=220" alt="Radish">
+        <h3>Radish</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Radish')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <!-- Grocery Item 4 -->
+      <div class="grocery-item" data-name="Milkshake" data-category="Liquids" data-benefits="Rich in nutrients" data-cost="₹50" data-delivery="Regular">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.zo1A3rUXaANAes4W6T8tfgHaHa&pid=Api&P=0&h=220" alt="Milkshake">
+        <h3>Milkshake</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Milkshake')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <div class="grocery-item" data-name="Olive Oil" data-category="Liquids" data-benefits="Rich in nutrients" data-cost="₹375" data-delivery="Regular">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.WqeMElPsVNg3bFIbAYt2ogHaHa&pid=Api&P=0&h=220" alt="Milkshake">
+        <h3>Olive oil</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Olive Oil')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <div class="grocery-item" data-name="Milkshake" data-category="Liquids" data-benefits="creamy" data-cost="₹50" data-delivery="Regular">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.IKr7QefdxzxlrkfLwUHKVwHaJ4&pid=Api&P=0&h=220" alt="Milkshake">
+        <h3> Oreo Milkshake</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Milkshake')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <div class="grocery-item" data-name="Mojito" data-category="Liquids" data-benefits="immunity booster" data-cost="₹50" data-delivery="Regular">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.BZWbChOedj_PZ8m-4tJ2JgHaEo&pid=Api&P=0&h=220" alt="Milkshake">
+        <h3> Mojito</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Milkshake')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+
+      <!-- Grocery Item 5 -->
+      <div class="grocery-item" data-name="Creamy Puffs" data-category="Bakery items" data-benefits="party appetizer" data-cost="₹30" data-delivery="Regular">
+        <img src="https://tse4.mm.bing.net/th?id=OIP._5nG5g67HvRTxbB-dZNzHgHaFj&pid=Api&P=0&h=220" alt="Homemade Puffs">
+        <h3>Creamy Puffs</h3>
+        <div class="actions">
+          <button class="view-btn" onclick="showInfo(this)">View</button>
+          <button class="add-to-cart-btn" onclick="addToCart('Homemade Puffs')">Add to Cart</button>
+          <i class="fas fa-heart like-icon"></i>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  
+  <footer>
+    <p>&copy; 2024 Grocery Store. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal for item details -->
+  <div id="info-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="item-name"></h2>
+      <p id="item-benefits"></p>
+      <p id="item-cost"></p>
+      <p id="item-delivery"></p>
+      <button id="add-to-cart-modal" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </div>
+  <!-- Modal for Added to Cart -->
+<div id="added-to-cart-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close" onclick="closeAddedToCartModal()">&times;</span>
+    <h2>Item added to cart!</h2>
+    <p>Your item has been successfully added to the cart.</p>
+  </div>
+</div>
+<!-- Item Added to Cart Pop-up Modal -->
+<div id="added-to-cart-modal" class="added-to-cart-modal hidden">
+  <p id="added-to-cart-message"></p>
+</div>
+
+
+
+  <script src="app.js"></script>
+</body>
+</html>

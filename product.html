@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="product-container">
+        <img id="product-image" src="" alt="Product Image">
+        <h2 id="product-name"></h2>
+        <p id="product-benefits"></p>
+        <p id="product-cost"></p>
+        <p id="product-delivery"></p>
+        
+        <label for="weight">No of Items</label>
+        <input type="number" id="weight" min="1" value="1">
+
+        <div class="button-container">
+            <button onclick="goBack()">Back to Home</button>
+            <button onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <script>
+        // Load product details from localStorage
+        document.getElementById('product-image').src = localStorage.getItem('itemImage');
+        document.getElementById('product-name').innerText = localStorage.getItem('itemName');
+        document.getElementById('product-benefits').innerText = "Benefits: " + localStorage.getItem('itemBenefits');
+        document.getElementById('product-cost').innerText = "Price: " + localStorage.getItem('itemCost');
+        document.getElementById('product-delivery').innerText = "Delivery: " + localStorage.getItem('itemDelivery');
+        // Proceed to payment page
+        function proceedToPayment() {
+            const quantity = document.getElementById('weight').value;
+            const price = parseFloat(localStorage.getItem('itemCost').replace('₹', '').trim());
+            const totalCost = price * quantity;
+
+            // Store the total cost and quantity in localStorage
+            localStorage.setItem('totalCost', '₹' + totalCost.toFixed(2));
+            localStorage.setItem('quantity', quantity);
+
+            // Redirect to payment page
+            window.location.href = "payment.html";  // Change this to your payment page filename
+        }
+
+        // Go back to the homepage
+        function goBack() {
+            window.location.href = "index.html"; // Change "index.html" to your homepage filename
+        }
+
+        
+    </script>
+</body>
+</html>

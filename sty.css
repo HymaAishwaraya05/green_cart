@@ -1,0 +1,156 @@
+/* General styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://tse4.mm.bing.net/th?id=OIP.SVI8asIUo7gxg0fGPidF5AHaEK&pid=Api&P=0&h=220') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the payment form (adjusted for improved width) */
+.payment-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;  /* Increased max width for a more balanced appearance */
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 14px; /* Slightly smaller font size for a compact yet clear layout */
+}
+
+/* Product Image */
+.product-img {
+    width: 100%;
+    max-width: 220px;  /* Slightly larger product image */
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Product Details */
+.payment-container p {
+    font-size: 14px;  /* Smaller text for details */
+    margin: 12px 0;
+    color: #333;
+}
+
+/* Style for the total amount */
+#total-amount {
+    font-size: 20px;  /* Slightly larger font for the total amount to stand out */
+    font-weight: bold;
+    margin-top: 15px;
+    color: #1d72b8;
+}
+
+/* Input field styles */
+form input {
+    width: 100%;
+    padding: 12px;  /* Increased padding for better usability */
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;  /* Clear, readable text */
+    box-sizing: border-box;
+}
+
+/* Input field focus effect */
+form input:focus {
+    border-color:green;
+    outline: none;
+}
+
+/* Button container for spacing buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Buttons */
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;  /* Slightly larger button text */
+    cursor: pointer;
+    background-color: #1d72b8;
+    color: white;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: green;
+}
+
+/* Go Back button styles */
+.payment-container button:nth-of-type(2) {
+    background-color: #e4e4e4;
+    color: #333;
+}
+
+.payment-container button:nth-of-type(2):hover {
+    background-color: #d1d1d1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payment-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Adjust product image size */
+    .product-img {
+        max-width: 200px;  /* Slightly smaller on smaller screens */
+    }
+
+    /* Adjust button styles for mobile */
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* Further responsiveness for very small screens */
+@media (max-width: 480px) {
+    .payment-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .product-img {
+        max-width: 150px;  /* Even smaller on tiny screens */
+    }
+
+    form input {
+        padding: 10px;
+    }
+
+    /* Additional margin for total amount for better spacing */
+    #total-amount {
+        margin-bottom: 15px;
+    }
+}
+
+/* Styling the go-back button */
+.go-back {
+    background-color: #e4e4e4;
+    color: #333;
+}
+
+.go-back:hover {
+    background-color: #d1d1d1;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Invoice</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Invoice Card -->
+        <div class="invoice-card">
+            <h2>Order Invoice</h2>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <img id="bill-product-image" src="" alt="Product Image" class="product-img">
+                <p><strong>Product:</strong> <span id="bill-product-name"></span></p>
+                <p><strong>Quantity:</strong> <span id="bill-product-quantity"></span></p>
+                <p><strong>Price:</strong> <span id="bill-product-cost"></span></p>
+                <p><strong>Delivery Charges:</strong> ₹50</p>
+                <p><strong>Total Amount:</strong> <span id="bill-total-amount"></span></p>
+            </div>
+
+            <!-- Customer Details -->
+            <h3>Customer Details</h3>
+            <div class="customer-details">
+                <p><strong>Name:</strong> <span id="customer-name"></span></p>
+                <p><strong>Address:</strong> <span id="customer-address"></span></p>
+                <p><strong>Phone:</strong> <span id="customer-phone"></span></p>
+            </div>
+
+            <!-- Store Data and Print Buttons -->
+            <div class="buttons">
+                <button onclick="storeData()">Store Data</button>
+                <button onclick="printInvoice()">Print Invoice</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to store data into localStorage and send to backend
+        function storeData() {
+    // Gather the data from HTML elements
+    const invoiceData = {
+        itemImage: document.getElementById('bill-product-image').src,  // Assuming an image element
+        itemName: document.getElementById('bill-product-name').innerText,
+        itemCost: document.getElementById('bill-product-cost').innerText,
+        quantity: document.getElementById('bill-product-quantity').innerText,
+        totalCost: document.getElementById('bill-total-amount').innerText,
+        customerName: document.getElementById('customer-name').innerText,
+        customerAddress: document.getElementById('customer-address').innerText,
+        customerPhone: document.getElementById('customer-phone').innerText
+    };
+
+    // Send POST request to backend to store the invoice data
+    fetch('http://localhost:5000/api/storeInvoice', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(invoiceData)  // Send data as JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Show success message on success
+    })
+    .catch(error => {
+        console.error('Error storing data:', error);
+        alert('Failed to store data'); // Show error message on failure
+    });
+}
+
+            
+        // Load order details from localStorage
+        document.getElementById('bill-product-image').src = localStorage.getItem('itemImage');
+        document.getElementById('bill-product-name').innerText = localStorage.getItem('itemName');
+        document.getElementById('bill-product-cost').innerText = localStorage.getItem('itemCost');
+        document.getElementById('bill-product-quantity').innerText = localStorage.getItem('quantity');
+        document.getElementById('bill-total-amount').innerText = "₹" + (parseFloat(localStorage.getItem('totalCost').replace('₹', '')) + 50).toFixed(2);
+
+        document.getElementById('customer-name').innerText = localStorage.getItem('customerName');
+        document.getElementById('customer-address').innerText = localStorage.getItem('customerAddress');
+        document.getElementById('customer-phone').innerText = localStorage.getItem('customerPhone');
+
+        // Print the invoice
+        function printInvoice() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
